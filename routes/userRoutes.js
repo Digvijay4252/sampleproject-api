@@ -1,9 +1,8 @@
-import { Router } from "express";
-const router = Router();
+const express = require("express");
+const router = express.Router();
 
-import { createUser } from "../controllers/userController";
-import { createUserValidation } from "../validations/userValidation";
+router.get("/", (req, res) => {
+  res.json({ message: "User route working" });
+});
 
-router.post("/users", createUserValidation, createUser);
-
-export default router;
+module.exports = router;

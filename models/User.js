@@ -1,7 +1,7 @@
-import { DataTypes } from "sequelize";
-import { define } from "../config/database";
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../config/db.js");
 
-const User = define(
+const User = sequelize.define(
   "User",
   {
     id: {
@@ -31,12 +31,8 @@ const User = define(
     tableName: "users",
     timestamps: true,
     createdAt: "created_at",
-    updatedAt: "updated_at",
-    indexes: [
-      { fields: ["email"] },
-      { fields: ["username"] }
-    ]
+    updatedAt: "updated_at"
   }
 );
 
-export default User;
+module.exports = User;

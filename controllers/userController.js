@@ -1,7 +1,7 @@
-import { validationResult } from "express-validator";
-import { create } from "../models/User";
+const { validationResult } = require("express-validator");
+const User = require("../models/User.js");
 
-export async function createUser(req, res) {
+async function createUser(req, res) {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -10,11 +10,7 @@ export async function createUser(req, res) {
 
     const { username, email, password } = req.body;
 
-    const user = await create({
-      username,
-      email,
-      password
-    });
+    const user = await User.create({ username, email, password });
 
     res.status(201).json({
       message: "User inserted successfully",
@@ -34,3 +30,5 @@ export async function createUser(req, res) {
     });
   }
 }
+
+module.exports = { createUser };
