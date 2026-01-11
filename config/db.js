@@ -17,7 +17,7 @@ const authenticate = async () => {
 };
 
 const sync = async () => {
-  await sequelize.sync({ alter: true });
+  await sequelize.sync();
 };
 
 module.exports = { sequelize, authenticate, sync };
