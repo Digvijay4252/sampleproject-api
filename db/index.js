@@ -4,7 +4,7 @@ const db = {};
 
 const sequelize = new Sequelize(process.env.DATABASE, process.env.USER_NAME, process.env.PASSWORD, {
     host: process.env.HOST,
-    port: process.env.DB_PORT || process.env.PORT || 3300,
+    port: process.env.PORT || 3300,
     dialect: "mysql"
 });
 
@@ -17,7 +17,7 @@ db.sequelize = sequelize;
 db.User = require('./models/user')(sequelize, DataTypes);
 
 (async () => {
-    await sequelize.sync({alter: true});
+    await sequelize.sync();
 })();
 
 module.exports = db;

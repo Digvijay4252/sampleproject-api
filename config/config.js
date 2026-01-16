@@ -7,7 +7,7 @@ const developmentConfig = {
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
   host: process.env.HOST,
-  port: process.env.PORT || 3306,
+  port: process.env.PORT || 3300,
   dialect: 'mysql',
 };
 
