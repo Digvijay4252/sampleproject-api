@@ -1,11 +1,8 @@
 const express = require('express');
 const routes = express.Router();
 
-const fileController = require('../controllers/file.controller');
+const userController = require('../controllers/user.controller');
 
-const { authUser } = require('../middlewares/verify-token.middleware');
-
-
-routes.use('/file', authUser, fileController);
+routes.use('/user', userController);
 
 module.exports = routes;

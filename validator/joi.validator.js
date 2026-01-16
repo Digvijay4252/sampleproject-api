@@ -1,5 +1,7 @@
 const Joi = require('joi');
 
 const configSchema = Joi.object({
-    id: Joi.string().required()
+    user_id: Joi.string().required(),
+    name: Joi.string().optional().allow(null),
+    email: Joi.string().optional().allow(null),
 })
