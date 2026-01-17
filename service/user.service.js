@@ -32,3 +32,5 @@ const getAccessToken = async (userId) => {
 };
 
 module.exports = createUser;
+// Also export as object for flexibility
+module.exports.userServices = { createUser, getAccessToken };
