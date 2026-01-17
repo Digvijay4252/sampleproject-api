@@ -1,10 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-
-// Initialize database (authenticate + sync are handled inside db/index.js)
-require('./db');
-
-// Routes
+const db = require('./db');
 const routes = require('./routes/routes.js');
 
 const app = express();
@@ -18,6 +14,16 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+
+// Initialize database, then start server
+(async () => {
+  try {
+    await db.initializeDB();
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error('❌ Failed to start server:', error);
+    process.exit(1);
+  }
+})();
